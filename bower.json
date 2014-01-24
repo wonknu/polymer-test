@@ -1,0 +1,8 @@
+{
+  "name": "color-switer-component",
+  "version": "1.0.0",
+  "dependencies": {
+    "polymer-elements": "Polymer/polymer-elements#~0.1.2",
+    "polymer-ui-elements": "Polymer/polymer-ui-elements#~0.1.2"
+  }
+}

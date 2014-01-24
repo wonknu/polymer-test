@@ -1,0 +1,52 @@
+<polymer-element name="color-switch" attributes="color colors selected" >
+    <link rel="stylesheet" href="color-switch.css" >
+    <template>
+        <div id="colorwrapper">
+            <template repeat="{{colors}}">
+                <div id="{{color}}" class="color-input" style="background:#{{color}};" on-click="{{colorSelect}}" ></div>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer('color-switch', {
+        	selectedColor:'000',
+            /**
+             * Init with empty colors array by default
+             */
+            created: function ()
+            {
+            	"use strict";
+                this.colors = [];
+            },
+            /**
+             * Check for color selection
+             * and trigger change event
+             */
+            colorSelect: function (e)
+            {
+            	"use strict";
+                var target = e.target,
+                	colorsElement = this.$.colorwrapper.children,
+                	colorsLenght = colorsElement.length,
+                	i;
+                for (i = 1; i < colorsLenght; i++) {
+					colorsElement[i].classList.remove('selected');
+                };
+                target.classList.add('selected');
+                this.selectedColor = target.getAttribute('id');
+            },
+            /**
+             * To retrieve selected color
+             * @return {String} hexadecimal color code
+             */
+            color: function (newColor)
+            {
+            	if(typeof newColor !== "undefined" && newColor !== null){
+            		this.selectedColor = newColor;
+            		return;
+            	}
+            	return this.selectedColor;
+            }
+        });
+    </script>
+</polymer-element>

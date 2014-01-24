@@ -1,0 +1,32 @@
+<link rel="import" href="color-switch.html">
+<polymer-element name="color-switcher" attributes="colorpanel">
+    <template>
+        <color-switch id="panel" colors="{{colors}}"></color-switch>
+    </template>
+    <script>
+        Polymer('color-switcher', {
+        	/**
+        	 * Fired when element is ready
+        	 */
+            ready: function ()
+            {
+            	"use strict";
+            	var self = this,
+            		colorArray = this.colorpanel.split(',');
+            	this.colors = [];
+            	colorArray.forEach(function (item)
+            	{
+            		self.colors.push({color:item});
+            	});
+            },
+            /**
+             * To retrieve selected color
+             * @return {String} hexadecimal color code
+             */
+            getColor: function ()
+            {
+            	return '#' + this.$.panel.color();
+            }
+        });
+    </script>
+</polymer-element>
